@@ -1,5 +1,5 @@
 # Intro to Spring :leaves:
-Within this repository is a series of projects ranging from basic Maven project with Spring Core module dependencies to full-fledged Spring Boot projects.  Follow the demos in the following order:
+Within this repository is a series of projects ranging from basic Maven projects with Spring Core module dependencies to full-fledged Spring Boot projects.  Follow the demos in the following order:
 
 1. `spring-intro-xml-config`
 2. `spring-intro-java-config`
