@@ -1,0 +1,61 @@
+package com.revature.models;
+
+import com.revature.services.MotivationService;
+
+public class FootballCoach implements Coach {
+
+    private String email;
+    private String teamName;
+    private MotivationService motivationService;
+
+    public FootballCoach() {
+        System.out.println("FootballCoach no-args constructor invoked!");
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public MotivationService getMotivationService() {
+        return motivationService;
+    }
+
+    // Setter-based dependency injection (Spring recommends this for OPTIONAL dependencies)
+    // Setter-based DI is accomplished by the container calling setter methods on your 
+    // beans after invoking a no-argument constructor or no-argument static factory method to instantiate your bean.
+    public void setMotivationService(MotivationService motivationService) {
+        System.out.println("FootballCoach.setMotivationService() invoked!");
+        this.motivationService = motivationService;
+    }
+
+    // method to be called in init-method property within
+    private void customInit() {
+        System.out.println("FootballCoach.customInit() invoked!");
+    }
+
+    private void customDestroy() {
+        System.out.println("FootballCoach.customDestroy() invoked!");
+    }
+
+    @Override
+    public String getDailyWorkout() {
+        return "Today's workout: Sprints to 40, 50, 60, 80, 100 yard lines";
+    }
+
+    @Override
+    public String getMotivation() {
+        return "The football coach says: " + motivationService.getMotivation();
+    }
+}

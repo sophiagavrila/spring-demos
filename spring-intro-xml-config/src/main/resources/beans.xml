@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    The beans.xml (default name; not required to be called this) is the registry file which contains our
+    bean definitions that will tell Spring what classes we want it to manage for us.
+    
+    Spring Beans are objects that are managed by the Spring IoC container
+ -->
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Provide the bean definition for our primary Coach implementation -->
+    <bean id="myCoach" class="com.revature.models.TrackCoach" scope="prototype">
+    <!--  The non-singleton, prototype scope of bean deployment results 
+    in the creation of a new bean instance every time a request for that 
+    specific bean is made  https://blog.marcnuri.com/spring-bean-scopes-guide-to-understand-the-different-bean-scopes -->
+
+        <!-- constructor-based dependency injection -->
+        <constructor-arg ref="myMotivationService"/>
+
+    </bean>
+
+    <!-- Provide the bean definition for our MotivationService -->
+    <bean id="myMotivationService" class="com.revature.services.MotivationService"/>
+
+    <!-- Provide a bean definition for the FootballCoach -->
+    <bean id="myFootballCoach" class="com.revature.models.FootballCoach" init-method="customInit" destroy-method="customDestroy">
+
+        <!-- setter-based dependency injection -->
+        <property name="motivationService" ref="myMotivationService"/>
+
+        <!-- field/property value injection -->
+        <property name="teamName" value="The Jets"/>
+        <property name="email" value="${coach.email}"/>
+
+    </bean>
+
+    <context:property-placeholder location="app.properties"/>
+
+
+<!-- https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/beans.html#:~:text=The%20following%20example%20shows%20the%20basic%20structure%20of%20XML%2Dbased%20configuration%20metadata%3A -->
+</beans>
