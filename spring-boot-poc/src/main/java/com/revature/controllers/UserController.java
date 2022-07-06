@@ -19,6 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.models.User;
 import com.revature.services.UserService;
 
+/**
+ * @RestController is a convenience annotation for creating Restful controllers.
+ *                 It is a specialization of @Component and is autodetected
+ *                 through classpath scanning. It adds the @Controller
+ *                 and @ResponseBody annotations. It converts the response to
+ *                 JSON or XML.
+ */
 @RestController
 @RequestMapping("/users")
 public class UserController {
