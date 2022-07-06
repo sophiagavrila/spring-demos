@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: spring-boot-poc
+    name: spring-boot-poctest
   h2:
     console:
       enabled: true

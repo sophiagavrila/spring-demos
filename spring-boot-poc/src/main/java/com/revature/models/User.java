@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
-@Entity @Table(name="users")
+@Entity @Table(name="app_users")
 @Data @NoArgsConstructor @AllArgsConstructor
 public class User {
 
